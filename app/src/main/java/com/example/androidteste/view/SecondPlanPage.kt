@@ -23,7 +23,7 @@ class SecondPlanPage : Fragment() {
 //    }
     private fun calculator() {
         initialTime = Date()
-        var numberIterations: Long = 1000000000000;
+        var numberIterations: Long = 10000;
         for(i in 0.. numberIterations) {
 
             val cosseno = cos(i.toDouble())
