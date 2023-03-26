@@ -12,6 +12,10 @@
         <action
             android:id="@+id/action_menuPage_to_seconPlanPage"
             app:destination="@id/seconPlanPage" />
+        <action
+            android:id="@+id/renderingPage"
+            app:destination="@id/dataRenderingPage"
+            app:popUpTo="@id/menuPage" />
     </fragment>
     <fragment
         android:id="@+id/seconPlanPage"
@@ -22,4 +26,8 @@
             android:id="@+id/action_seconPlanPage_to_menuPage"
             app:destination="@id/menuPage" />
     </fragment>
+    <activity
+        android:id="@+id/dataRenderingPage"
+        android:name="com.example.androidteste.view.DataRenderingPage"
+        android:label="DataRenderingPage" />
 </navigation>
