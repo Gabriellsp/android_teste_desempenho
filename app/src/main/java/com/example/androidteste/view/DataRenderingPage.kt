@@ -6,6 +6,7 @@ import com.example.androidteste.R
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidteste.models.CharacterDataWrapper
 import com.example.androidteste.models.MarvelCharacter
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,15 +28,14 @@ class DataRenderingPage : AppCompatActivity() {
             apikey = "422190db783a962029ff4735e165cb88",
             hash = "3b5c77dd93627ad07e11a02afa9c7239"
         )
-        result.enqueue(object : Callback<List<MarvelCharacter>> {
-            override fun onResponse(call: Call<List<MarvelCharacter>>, response: Response<List<MarvelCharacter>>) {
+        result.enqueue(object : Callback<CharacterDataWrapper> {
+            override fun onResponse(call: Call<CharacterDataWrapper>, response: Response<CharacterDataWrapper>) {
                 val listMarvel = response.body()
-                recyclerView.adapter = MarvelAdapter(listMarvel!!)
-                println(listMarvel)
+                recyclerView.adapter = MarvelAdapter(listMarvel!!.data.results)
             }
 
-            override fun onFailure(call: Call<List<MarvelCharacter>>, t: Throwable) {
-                println("Erro ao buscar usuário: ${t.message}")
+            override fun onFailure(call: Call<CharacterDataWrapper>, t: Throwable) {
+                TODO("Not yet implemented")
             }
         })
     }

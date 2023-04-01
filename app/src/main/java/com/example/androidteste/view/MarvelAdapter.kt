@@ -10,11 +10,11 @@ import com.bumptech.glide.Glide
 import com.example.androidteste.R
 import com.example.androidteste.models.MarvelCharacter
 
-class MarvelAdapter(private val marvelCharacters: List<MarvelCharacter>): RecyclerView.Adapter<MarvelAdapter.ViewHolder>() {
+class MarvelAdapter(private val marvelCharacters: Array<MarvelCharacter>): RecyclerView.Adapter<MarvelAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val marvelImageView = itemView.findViewById<ImageView>(R.id.marvel_image)
         val marvelIdView = itemView.findViewById<TextView>(R.id.marvel_id)
-        val marvelNameView = itemView.findViewById<TextView>(R.id.marvel_id)
+        val marvelNameView = itemView.findViewById<TextView>(R.id.marvel_name)
         val marvelDescriptionView = itemView.findViewById<TextView>(R.id.marvel_description)
     }
 
@@ -25,10 +25,14 @@ class MarvelAdapter(private val marvelCharacters: List<MarvelCharacter>): Recycl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = marvelCharacters[position]
-        Glide.with(holder.marvelImageView).load(character.thumbnail.path+"."+character.thumbnail.extension).into(holder.marvelImageView);
-        holder.marvelIdView.text = character.id.toString()
-        holder.marvelNameView.text = character.name
-        holder.marvelDescriptionView.text = character.description
+        val imageUrl = character.thumbnail!!.path+"."+character.thumbnail!!.extension;
+        val id = "Id: "+character.id.toString();
+        val name = "Name: "+character.name;
+        val description = "Description: "+character.description;
+        Glide.with(holder.itemView.context).load(imageUrl).into(holder.marvelImageView);
+        holder.marvelIdView.text = id
+        holder.marvelNameView.text = name
+        holder.marvelDescriptionView.text = description
     }
 
     override fun getItemCount(): Int {

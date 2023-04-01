@@ -1,4 +1,5 @@
 package com.example.androidteste.services
+import com.example.androidteste.models.CharacterDataWrapper
 import com.example.androidteste.models.MarvelCharacter
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,6 +13,6 @@ interface MarvelService {
              @Query("offset") offset: Int,
              @Query("apikey") apikey: String,
              @Query("hash") hash: String,
-    ): Call<List<MarvelCharacter>>
+    ): Call<CharacterDataWrapper>
 
 }

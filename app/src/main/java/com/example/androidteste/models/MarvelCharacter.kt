@@ -1,6 +1,14 @@
 package com.example.androidteste.models
 
-class MarvelCharacter(val id: Int,
-           val name: String,
-            val thumbnail: CharacterThumbnail,
-            val description: String)
+import com.google.gson.annotations.SerializedName
+
+data class MarvelCharacter(
+    @SerializedName("id")
+    var id: Long,
+    @SerializedName("name")
+    var name: String,
+    @SerializedName("description")
+    var description: String,
+    @SerializedName("thumbnail")
+    var thumbnail: CharacterThumbnail?
+)

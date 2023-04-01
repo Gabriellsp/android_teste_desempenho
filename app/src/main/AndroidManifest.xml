@@ -14,7 +14,8 @@
         android:theme="@style/Theme.AndroidTeste"
         tools:targetApi="31"
         android:hardwareAccelerated="false"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">

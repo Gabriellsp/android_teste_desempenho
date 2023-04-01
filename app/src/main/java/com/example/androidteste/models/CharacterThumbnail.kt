@@ -1,4 +1,10 @@
 package com.example.androidteste.models
 
-class CharacterThumbnail(val path: String,
-                      val extension: String)
+import com.google.gson.annotations.SerializedName
+
+data class CharacterThumbnail(
+    @SerializedName("path")
+    var path: String,
+    @SerializedName("extension")
+    var extension: String
+)
