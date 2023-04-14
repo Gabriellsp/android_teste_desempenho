@@ -1,5 +1,6 @@
 package com.example.androidteste.view
 
+import SharedPreferencesManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,19 +18,17 @@ class SecondPlanPage : Fragment() {
     private lateinit var finalTime: Date
     private var processingTime: Long = 0
 
-//    override fun onStart() {
-//        super.onStart()
-//        calculator()
-//    }
-    private fun calculator() {
+    private fun sharedPrefTest() {
         initialTime = Date()
+        val preferencesManager = SharedPreferencesManager(requireContext());
         var numberIterations: Long = 10000;
-        for(i in 0.. numberIterations) {
-
-            val cosseno = cos(i.toDouble())
-            val seno = sin(cosseno)
-            val tangente = tan(seno)
+        preferencesManager.saveInt("number", 0);
+        var i = 0
+        while (i < numberIterations) {
+            i = preferencesManager.getInt("number", 0)
+            preferencesManager.saveInt("number", i + 1)
         }
+
         finalTime = Date()
         processingTime = finalTime.time - initialTime.time
     }
@@ -37,10 +36,10 @@ class SecondPlanPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        calculator()
+        sharedPrefTest()
         var view =  inflater.inflate(R.layout.fragment_secon_plan_page, container, false)
         val timeText = view.findViewById<TextView>(R.id.timeInMiliseconds)
-        timeText.text = processingTime.toString()
+        timeText.text = "O tempo de processamento foi de " + processingTime.toString() + " milissegundos"
         print(processingTime)
         return view
     }
