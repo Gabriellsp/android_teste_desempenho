@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.androidteste.R
+import com.example.androidteste.database.SQLiteHelper
 
 class MenuPage : Fragment() {
     override fun onCreateView(
@@ -25,6 +26,9 @@ class MenuPage : Fragment() {
             val intent = Intent(context, DataRenderingPage::class.java)
             startActivity(intent)
         }
+        val database = SQLiteHelper(requireContext());
+        val x = database.getAllChars()
+        println(x)
         return view
     }
 }

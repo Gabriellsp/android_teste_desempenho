@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.androidteste.R
 import com.example.androidteste.models.MarvelCharacter
 
-class MarvelAdapter(private val marvelCharacters: Array<MarvelCharacter>): RecyclerView.Adapter<MarvelAdapter.ViewHolder>() {
+class MarvelAdapter(private val marvelCharacters: ArrayList<MarvelCharacter>): RecyclerView.Adapter<MarvelAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val marvelImageView = itemView.findViewById<ImageView>(R.id.marvel_image)
         val marvelIdView = itemView.findViewById<TextView>(R.id.marvel_id)
